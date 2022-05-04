@@ -4,18 +4,19 @@
     flex: 1 1 50px;
 }
 
+
 .gridRow {
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     flex: 1 1 0;
-    width: 960px;
 
 }
 
+
 .sketchContainer {
     background-color: darkorchid;
-    height: 960px;
-    width: 960px;
+    height: 600px;
+    width: 600px;
     display: flex;
     flex-direction: column;
 
