@@ -1,3 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Neonderthaw&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Koulen&family=Neonderthaw&display=swap');
+
+.etchTitle {
+    padding: 10px 10px;
+    color: goldenrod;
+    font-size: 60px;
+    text-align: center;
+    font-family: 'Neonderthaw', cursive;
+}
+
+h3 {
+    font-family: 'Koulen', cursive;
+    font-size: 20px;
+    color: goldenrod;
+    text-align: center;
+    margin: 5px 0;
+}
 .gridBlock {
     background-color:#ccc;
     border: 1px solid #999;
@@ -12,9 +30,13 @@
 
 }
 
+.etchasketch {
+    background-color:firebrick;
+    padding: 20px 100px;
+    border-radius: 20px;
+}
 
-.sketchContainer {
-    background-color: darkorchid;
+.drawingContainer {
     height: 600px;
     width: 600px;
     display: flex;
@@ -22,37 +44,61 @@
 
 }
 
-.slidecontainer {
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.controlDiv {
+    display: flex;
+    flex-direction: row;
+    width: 600px;
+
+}
+
+.controlDiv div {
+    width: 300px;
+    flex: 1 1 0;
+    text-align: center; 
+    font-family: 'Koulen', cursive;
+    line-height: 20px;
+   
+}
+
+
+
+.gridSlider {
     width: 100%;
   }
   
-  .slider {
+  .gridSlider {
     -webkit-appearance: none;
-    width: 100%;
     height: 25px;
-    background: #d3d3d3;
+    background: #666;
     outline: none;
     opacity: 0.7;
     -webkit-transition: .2s;
     transition: opacity .2s;
   }
   
-  .slider:hover {
+  .gridSlider:hover {
     opacity: 1;
   }
   
-  .slider::-webkit-slider-thumb {
+  .gridSlider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 25px;
     height: 25px;
-    background: #04AA6D;
+    background: white;
     cursor: pointer;
   }
   
-  .slider::-moz-range-thumb {
+  .gridSlider::-moz-range-thumb {
     width: 25px;
     height: 25px;
-    background: #04AA6D;
+    background: white;
     cursor: pointer;
   }

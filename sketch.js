@@ -1,9 +1,46 @@
 const etchasketch = document.createElement('div');
-etchasketch.classList.add('sketchContainer');
+etchasketch.classList.add('etchasketch');
 etchasketch.setAttribute('id', 'etchasketch');
 document.body.appendChild(etchasketch);
 
+
+const etchTitle = document.createElement('div');
+etchTitle.classList.add('etchTitle');
+etchTitle.setAttribute('id', 'etchTitle');
+etchTitle.textContent = "Etch A Sketch";
+etchasketch.appendChild(etchTitle);
+
+
+const drawingGrid = document.createElement('div');
+drawingGrid.classList.add('drawingContainer');
+drawingGrid.setAttribute('id', 'drawingGrid');
+etchasketch.appendChild(drawingGrid);
+
+/*Controls Divs*/
+const controls = document.createElement('div');
+controls.classList.add("controlDiv");
+
+const leftControls = document.createElement('div');
+leftControls.textContent = "left";
+
+const centerControls = document.createElement('div');
+centerControls.textContent = "center";
+
+const rightControls = document.createElement('div');
+rightControls.textContent = "right";
+
+
+etchasketch.appendChild(controls);
+controls.appendChild(leftControls);
+controls.appendChild(centerControls);
+controls.appendChild(rightControls);
+
 /* grid size slider */
+const gridSelectionTitle = document.createElement('h3');
+gridSelectionTitle.textContent = "Grid Density";
+leftControls.appendChild(gridSelectionTitle);
+
+
 const gridSlider = document.createElement('input');
 gridSlider.classList.add('gridSlider');
 gridSlider.setAttribute('type', 'range');
@@ -12,12 +49,12 @@ gridSlider.setAttribute('max', '100');
 gridSlider.setAttribute('value', '20');
 gridSlider.setAttribute('id', 'slider');
 gridSlider.setAttribute('onchange', 'sliderValue.value=value');
-document.body.appendChild(gridSlider);
+leftControls.appendChild(gridSlider);
 
 const gridSelection = document.createElement('output');
 gridSelection.setAttribute('id','sliderValue');
 gridSelection.textContent = 16;
-document.body.appendChild(gridSelection);
+leftControls.appendChild(gridSelection);
 
 
 let length = 16;
@@ -27,10 +64,13 @@ let length = 16;
 const watchSlider = document.querySelector('.gridSlider');
 watchSlider.addEventListener('change', (event) => {
     let length = document.getElementById("sliderValue").value;
-    let oldBlocks = document.getElementById("etchasketch");
+
+    /*Clear old divs */
+    let oldBlocks = document.getElementById("drawingGrid");
         while (oldBlocks.firstChild) {
         oldBlocks.removeChild(oldBlocks.firstChild);
         }
+    /*Make new divs */
     makeGrid(length);  
   });
 
@@ -39,7 +79,7 @@ function firstRow(length) {
     const rowLength = document.createElement('div');
     rowLength.classList.add('gridRow');
     rowLength.setAttribute('id','rowLength');
-    etchasketch.appendChild(rowLength);
+    drawingGrid.appendChild(rowLength);
 
     for (let i = 1; i <= length; i++) {
         const gridBlock = document.createElement('div');
