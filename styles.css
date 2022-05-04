@@ -1,0 +1,22 @@
+.gridBlock {
+    background-color:#ccc;
+    border: 1px solid #999;
+    flex: 1 1 50px;
+}
+
+.gridRow {
+    display: flex;
+    justify-content: center;
+    flex: 1 1 0;
+    width: 960px;
+
+}
+
+.sketchContainer {
+    background-color: darkorchid;
+    height: 960px;
+    width: 960px;
+    display: flex;
+    flex-direction: column;
+
+}
