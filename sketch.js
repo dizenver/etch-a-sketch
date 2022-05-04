@@ -21,13 +21,13 @@ const controls = document.createElement('div');
 controls.classList.add("controlDiv");
 
 const leftControls = document.createElement('div');
-leftControls.textContent = "left";
+leftControls.setAttribute("id","left");
 
 const centerControls = document.createElement('div');
-centerControls.textContent = "center";
+centerControls.setAttribute("id","center");
 
 const rightControls = document.createElement('div');
-rightControls.textContent = "right";
+rightControls.setAttribute("id","right");
 
 
 etchasketch.appendChild(controls);
@@ -36,10 +36,16 @@ controls.appendChild(centerControls);
 controls.appendChild(rightControls);
 
 /* grid size slider */
-const gridSelectionTitle = document.createElement('h3');
-gridSelectionTitle.textContent = "Grid Density";
+const gridSelectionTitle = document.createElement('div');
+gridSelectionTitle.classList.add('densityTitle');
+gridSelectionTitle.textContent = "Density";
 leftControls.appendChild(gridSelectionTitle);
 
+
+const gridSelection = document.createElement('output');
+gridSelection.setAttribute('id','sliderValue');
+gridSelection.textContent = 16;
+leftControls.appendChild(gridSelection);
 
 const gridSlider = document.createElement('input');
 gridSlider.classList.add('gridSlider');
@@ -50,11 +56,6 @@ gridSlider.setAttribute('value', '20');
 gridSlider.setAttribute('id', 'slider');
 gridSlider.setAttribute('onchange', 'sliderValue.value=value');
 leftControls.appendChild(gridSlider);
-
-const gridSelection = document.createElement('output');
-gridSelection.setAttribute('id','sliderValue');
-gridSelection.textContent = 16;
-leftControls.appendChild(gridSelection);
 
 
 let length = 16;
@@ -117,3 +118,35 @@ function hoverColor($event) {
     block.style.backgroundColor = `${blockBg()}`;
 }
 
+const clearBtn = document.createElement("button");
+clearBtn.classList.add("clearButton");
+clearBtn.textContent = "CLEAR";
+centerControls.appendChild(clearBtn);
+
+const colorRadioContainer = document.createElement("div");
+colorRadioContainer.classList.add('colorRadioContainer');
+
+const colorRadioOption = document.createElement("input");
+colorRadioOption.setAttribute('type', 'radio');
+colorRadioOption.setAttribute('id', 'color-radio');
+colorRadioOption.setAttribute('name', 'etchasketchRadio');
+colorRadioOption.setAttribute('value', 'color');
+colorRadioContainer.appendChild(colorRadioOption);
+const colorRadioLabel = document.createElement("label");
+colorRadioLabel.setAttribute('for', 'color-radio');
+colorRadioLabel.textContent ="Color";
+colorRadioContainer.appendChild(colorRadioLabel);
+
+
+const blackRadioOption = document.createElement("input");
+blackRadioOption.setAttribute('type', 'radio');
+blackRadioOption.setAttribute('id', 'black-radio');
+blackRadioOption.setAttribute('name', 'etchasketchRadio');
+blackRadioOption.setAttribute('value', 'black');
+colorRadioContainer.appendChild(blackRadioOption);
+const blackRadioLabel = document.createElement("label");
+blackRadioLabel.setAttribute('for', 'black-radio');
+blackRadioLabel.textContent = "Black";
+colorRadioContainer.appendChild(blackRadioLabel);
+
+rightControls.appendChild(colorRadioContainer)

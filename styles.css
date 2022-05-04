@@ -3,19 +3,14 @@
 
 .etchTitle {
     padding: 10px 10px;
-    color: goldenrod;
     font-size: 60px;
     text-align: center;
     font-family: 'Neonderthaw', cursive;
+    color: goldenrod;
+
+    
 }
 
-h3 {
-    font-family: 'Koulen', cursive;
-    font-size: 20px;
-    color: goldenrod;
-    text-align: center;
-    margin: 5px 0;
-}
 .gridBlock {
     background-color:#ccc;
     border: 1px solid #999;
@@ -54,20 +49,40 @@ h3 {
 .controlDiv {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     width: 600px;
-
+    padding-top: 20px;
 }
 
 .controlDiv div {
-    width: 300px;
-    flex: 1 1 0;
-    text-align: center; 
+
     font-family: 'Koulen', cursive;
     line-height: 20px;
-   
+    color: goldenrod;
+    font-size: 20px;
+
+}
+
+#sliderValue {
+    display: none;
+}
+
+.clearButton {
+    height: 50px;
+    width: 125px;
+    border-radius: 10px;
+    font-family: 'Koulen', cursive;
+    font-size: 20px;
+    color:rgba(0, 0, 0, 0.6);
 }
 
 
+.densityTitle {
+    margin: 0px 0px;
+    padding: 0px 0px;
+    text-align: center;
+}
 
 .gridSlider {
     width: 100%;
@@ -102,3 +117,52 @@ h3 {
     background: white;
     cursor: pointer;
   }
+
+
+
+  .colorRadioContainer {
+	display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+
+
+.colorRadioContainer input {
+	position: absolute !important;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	width: 1px;
+	border: 0;
+	overflow: hidden;
+}
+
+.colorRadioContainer label {
+	background-color: #e4e4e4;
+	color: rgba(0, 0, 0, 0.6);
+	font-size: 20px;
+	line-height: 1;
+	text-align: center;
+	padding: 8px 16px;
+	margin-right: -1px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+	transition: all 0.1s ease-in-out;
+}
+
+.colorRadioContainer label:hover {
+	cursor: pointer;
+}
+
+.colorRadioContainer input:checked + label {
+	background-color: goldenrod;
+	box-shadow: none;
+}
+
+.colorRadioContainer label:first-of-type {
+	border-radius: 4px 0 0 4px;
+}
+
+.colorRadioContainer label:last-of-type {
+	border-radius: 0 4px 4px 0;
+}
