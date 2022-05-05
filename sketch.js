@@ -50,7 +50,7 @@ leftControls.appendChild(gridSelection);
 const gridSlider = document.createElement('input');
 gridSlider.classList.add('gridSlider');
 gridSlider.setAttribute('type', 'range');
-gridSlider.setAttribute('min', '1');
+gridSlider.setAttribute('min', '16');
 gridSlider.setAttribute('max', '100');
 gridSlider.setAttribute('value', '20');
 gridSlider.setAttribute('id', 'slider');
@@ -115,6 +115,7 @@ function blockBg () {
 /* Call Random Color */
 function hoverColor($event) {
     let block = $event.target;
+    if 
     block.style.backgroundColor = `${blockBg()}`;
 }
 
@@ -122,6 +123,24 @@ const clearBtn = document.createElement("button");
 clearBtn.classList.add("clearButton");
 clearBtn.textContent = "CLEAR";
 centerControls.appendChild(clearBtn);
+
+
+/* Clear when clear button is pressed */
+const watchClear = document.querySelector('.clearButton');
+watchClear.addEventListener('click', (event) => {
+    let length = document.getElementById("sliderValue").value;
+
+    /*Clear old divs */
+    let oldBlocks = document.getElementById("drawingGrid");
+        while (oldBlocks.firstChild) {
+        oldBlocks.removeChild(oldBlocks.firstChild);
+        }
+    /*Make new divs */
+    makeGrid(length);  
+  });
+
+
+
 
 const colorRadioContainer = document.createElement("div");
 colorRadioContainer.classList.add('colorRadioContainer');
