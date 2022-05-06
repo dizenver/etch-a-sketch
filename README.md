@@ -18,6 +18,8 @@ Overall, I found the hardest part to be the changing between color options.  I t
 	-  color picker.
 	- color themes even. (warm, cold, earthy, dark)
 - I would like to try and make circlar sliders/toggles to make it look more like an etch a sketch
+- Using different event listeners (mousedown) to make drawing easier.
+	- Find out how to make this usable on mobile (touch event listener)
 
 
 ## Project Elements
