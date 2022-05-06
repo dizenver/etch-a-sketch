@@ -98,26 +98,9 @@ function makeGrid(length) {
     }
 }
 
-/*Create Grid */
-makeGrid(length);  
 
+/* Clear button */
 
-/* Generate Random Color */
-function blockBg () {
-    const x=Math.round(0xffffff * Math.random()).toString(16);
-    const y=(6-x.length);
-    const z= "000000";
-    const z1 = z.substring(0,y);
-    const color = "#" + z1 + x;
-    return color; 
-}
-
-/* Call Random Color */
-function hoverColor($event) {
-    let block = $event.target;
-    if 
-    block.style.backgroundColor = `${blockBg()}`;
-}
 
 const clearBtn = document.createElement("button");
 clearBtn.classList.add("clearButton");
@@ -125,7 +108,7 @@ clearBtn.textContent = "CLEAR";
 centerControls.appendChild(clearBtn);
 
 
-/* Clear when clear button is pressed */
+/* Add Clear Button Functionality */
 const watchClear = document.querySelector('.clearButton');
 watchClear.addEventListener('click', (event) => {
     let length = document.getElementById("sliderValue").value;
@@ -139,33 +122,81 @@ watchClear.addEventListener('click', (event) => {
     makeGrid(length);  
   });
 
+const colorSelectContainer = document.createElement("div");
+colorSelectContainer.classList.add('colorSelectContainer');
+
+const colorSelect = document.createElement("input");
+colorSelect.setAttribute('type', 'checkbox');
+colorSelect.setAttribute('id', 'switch');
+let selectDrawing = document.querySelector(".drawingContainer");
+selectDrawing.parentNode.insertBefore(colorSelect, selectDrawing.nextSibling);
+
+const switchColor = document.createElement("label");
+switchColor.classList.add('switchColor');
+switchColor.setAttribute('for', 'switch');
+colorSelectContainer.appendChild(switchColor);
+
+const toggleDiv = document.createElement("div");
+toggleDiv.classList.add('toggleDiv');
+switchColor.appendChild(toggleDiv);
+
+const colorName = document.createElement("div");
+colorName.classList.add('colorName');
+switchColor.appendChild(colorName);
+
+const originalColor = document.createElement("p");
+originalColor.classList.add('originalColor');
+originalColor.textContent = "Original";
+colorName.appendChild(originalColor);
+const psyColor = document.createElement("p");
+psyColor.classList.add('psyColor');
+psyColor.textContent = "Psychedelic";
+colorName.appendChild(psyColor);
+
+rightControls.appendChild(colorSelectContainer);
 
 
+/* Generate Random Color */
+function blockPsychedelic () {
+            const x=Math.round(0xffffff * Math.random()).toString(16);
+            const y=(6-x.length);
+            const z= "000000";
+            const z1 = z.substring(0,y);
+            const color = "#" + z1 + x;
+            console.log("psych");
+            return color; 
+}
 
-const colorRadioContainer = document.createElement("div");
-colorRadioContainer.classList.add('colorRadioContainer');
+function blockOriginal () {
+    const color = "#222";
+    console.log("psych");
+    return color; 
+}
 
-const colorRadioOption = document.createElement("input");
-colorRadioOption.setAttribute('type', 'radio');
-colorRadioOption.setAttribute('id', 'color-radio');
-colorRadioOption.setAttribute('name', 'etchasketchRadio');
-colorRadioOption.setAttribute('value', 'color');
-colorRadioContainer.appendChild(colorRadioOption);
-const colorRadioLabel = document.createElement("label");
-colorRadioLabel.setAttribute('for', 'color-radio');
-colorRadioLabel.textContent ="Color";
-colorRadioContainer.appendChild(colorRadioLabel);
+function hoverColor($event) {
+    let block = $event.target;
+    block.style.backgroundColor = `${blockOriginal()}`;
+    const watchColor = document.querySelector("#switch");
+    watchColor.addEventListener('change', function() {
+        if (this.checked) {
+          console.log("Checkbox is checked..Psy");
+          block.style.backgroundColor = `${blockPsychedelic()}`;
+        } else {
+          console.log("Checkbox is not checked..Orig");
+          block.style.backgroundColor = `${blockOriginal()}`;
+        }
+      });
+}
 
 
-const blackRadioOption = document.createElement("input");
-blackRadioOption.setAttribute('type', 'radio');
-blackRadioOption.setAttribute('id', 'black-radio');
-blackRadioOption.setAttribute('name', 'etchasketchRadio');
-blackRadioOption.setAttribute('value', 'black');
-colorRadioContainer.appendChild(blackRadioOption);
-const blackRadioLabel = document.createElement("label");
-blackRadioLabel.setAttribute('for', 'black-radio');
-blackRadioLabel.textContent = "Black";
-colorRadioContainer.appendChild(blackRadioLabel);
+const watchColor = document.querySelector("#switch");
+watchColor.addEventListener('change', function() {
+        if (this.checked) {
+          console.log("Checkbox is checked..");
+        } else {
+          console.log("Checkbox is not checked..");
+        }
+      });
 
-rightControls.appendChild(colorRadioContainer)
+/*Create Grid */
+makeGrid(length); 

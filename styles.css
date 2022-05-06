@@ -55,12 +55,13 @@
     padding-top: 20px;
 }
 
-.controlDiv div {
+#center, #left, #right {
 
     font-family: 'Koulen', cursive;
-    line-height: 20px;
     color: goldenrod;
-    font-size: 20px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
 
 }
 
@@ -76,6 +77,7 @@
     font-size: 20px;
     color:rgba(0, 0, 0, 0.6);
 }
+
 
 
 .densityTitle {
@@ -119,7 +121,7 @@
   }
 
 
-
+/*
   .colorRadioContainer {
 	display: flex;
     justify-content: center;
@@ -166,3 +168,56 @@
 .colorRadioContainer label:last-of-type {
 	border-radius: 0 4px 4px 0;
 }
+*/
+
+/* Color Toggle */
+.colorSelectContainer {
+    display: flex;
+    margin: auto;
+    width: 200px;
+    justify-content: right;
+  }
+
+ p {
+    color: white;
+      text-shadow: 3px 3px 3px #000;
+  }
+label, .toggleDiv {
+    height: 2.8rem;
+    border-radius: 100px;
+  }
+label {
+    width: 100%;
+    background-color: #999;
+    border-radius: 100px;
+    position: relative;
+    cursor: pointer;
+  }
+.toggleDiv {
+    position: absolute;
+    width: 50%;
+    background-color: #666;
+    box-shadow: 0 2px 15px rgba(0,0,0,.15);
+    transition: transform .3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+.colorName {
+    font-size: 70%;
+    font-weight: bolder;
+    width: 75%;
+    margin-left: 15%;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    user-select: none;
+  }
+  
+  /* -------- Switch Styles ------------*/
+[type="checkbox"] {
+    display: none;
+  }
+  /* Toggle */
+[type="checkbox"]:checked + .controlDiv .toggleDiv{
+    transform: translateX(100%);
+    background-image: url('images/psychedelicbg.jpg');
+    background-size: 250px;
+  }
