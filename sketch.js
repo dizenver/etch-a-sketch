@@ -36,16 +36,15 @@ controls.appendChild(centerControls);
 controls.appendChild(rightControls);
 
 /* grid size slider */
-const gridSelectionTitle = document.createElement('div');
-gridSelectionTitle.classList.add('densityTitle');
-gridSelectionTitle.textContent = "Density";
-leftControls.appendChild(gridSelectionTitle);
+const sliderContainer = document.createElement('div');
+sliderContainer.classList.add('sliderContainer');
+
 
 
 const gridSelection = document.createElement('output');
 gridSelection.setAttribute('id','sliderValue');
 gridSelection.textContent = 16;
-leftControls.appendChild(gridSelection);
+sliderContainer.appendChild(gridSelection);
 
 const gridSlider = document.createElement('input');
 gridSlider.classList.add('gridSlider');
@@ -55,7 +54,14 @@ gridSlider.setAttribute('max', '100');
 gridSlider.setAttribute('value', '20');
 gridSlider.setAttribute('id', 'slider');
 gridSlider.setAttribute('onchange', 'sliderValue.value=value');
-leftControls.appendChild(gridSlider);
+sliderContainer.appendChild(gridSlider);
+
+const gridSelectionTitle = document.createElement('div');
+gridSelectionTitle.classList.add('densityTitle');
+gridSelectionTitle.textContent = "Density";
+sliderContainer.appendChild(gridSelectionTitle);
+
+leftControls.appendChild(sliderContainer);
 
 
 let length = 16;
@@ -122,6 +128,8 @@ watchClear.addEventListener('click', (event) => {
     makeGrid(length);  
   });
 
+
+/* Color Select Section - Right Control */
 const colorSelectContainer = document.createElement("div");
 colorSelectContainer.classList.add('colorSelectContainer');
 
@@ -169,34 +177,33 @@ function blockPsychedelic () {
 
 function blockOriginal () {
     const color = "#222";
-    console.log("psych");
+    console.log("original");
     return color; 
 }
 
+const colorSwitch = document.querySelector("#switch");
+colorSwitch.addEventListener('change', colorChoice);
+
+function colorChoice() {
+    if (document.getElementById('switch').checked) {
+        return blockPsychedelic();
+    } else {
+        return blockOriginal();
+    }
+
+}
+
 function hoverColor($event) {
-    let block = $event.target;
-    block.style.backgroundColor = `${blockOriginal()}`;
-    const watchColor = document.querySelector("#switch");
-    watchColor.addEventListener('change', function() {
-        if (this.checked) {
-          console.log("Checkbox is checked..Psy");
-          block.style.backgroundColor = `${blockPsychedelic()}`;
-        } else {
-          console.log("Checkbox is not checked..Orig");
-          block.style.backgroundColor = `${blockOriginal()}`;
-        }
-      });
+        let block = $event.target;
+        block.style.backgroundColor = `${colorChoice()}`;
 }
 
 
-const watchColor = document.querySelector("#switch");
-watchColor.addEventListener('change', function() {
-        if (this.checked) {
-          console.log("Checkbox is checked..");
-        } else {
-          console.log("Checkbox is not checked..");
-        }
-      });
+const footer = document.createElement("div");
+footer.classList.add('footer');
+footer.innerHTML = "<a href = 'https://github.com/dizenver/etch-a-sketch'><i class='fab fa-github fa-2x' aria-hidden='true'></i><div>Built by dizenver </div></a>";
+document.body.appendChild(footer);
+
 
 /*Create Grid */
 makeGrid(length); 
