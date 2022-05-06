@@ -1,9 +1,5 @@
-# etch-a-sketch
-This is a project created while following The Odin Project cirriculum.
-
-It is created using solely DOM Manipulation and CSS styling. 
-
 # Etch A Sketch 
+This is a project created while following The Odin Project 
 Create an etch a sketch using **DOM Manipulation**
 
 ### Functionality Goals
