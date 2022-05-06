@@ -1,6 +1,8 @@
 # Etch A Sketch 
-This is a project created while following The Odin Project 
+This is a project created while following The Odin Project
 Create an etch a sketch using **DOM Manipulation**
+
+[Demo](https://dizenver.github.io/etch-a-sketch/)
 
 ### Functionality Goals
 The etch a sketch must include:
